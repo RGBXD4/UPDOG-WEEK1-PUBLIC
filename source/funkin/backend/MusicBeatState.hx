@@ -10,6 +10,9 @@ import funkin.data.*;
 import funkin.data.scripts.*;
 #if mobile
 import mobile.MobileControls;
+import flixel.FlxCamera;
+import flixel.input.actions.FlxActionInput;
+import flixel.util.FlxDestroyUtil;
 #end
 class MusicBeatState extends FlxUIState
 {
@@ -86,16 +89,10 @@ class MusicBeatState extends FlxUIState
 	#if mobile
 		var mobileControls:MobileControls;
 
-		public function noCheckPress() {
-		Controls.CheckPress = false;
-	        }
-     
 		public function addMobileControls()
 		{
 			if (mobileControls != null)
 			removeMobileControls();
-			
-			Controls.CheckPress = false;
 
 			mobileControls = new MobileControls();
 
