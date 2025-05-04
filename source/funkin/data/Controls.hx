@@ -11,7 +11,6 @@ import flixel.input.gamepad.FlxGamepadButton;
 import flixel.input.gamepad.FlxGamepadInputID;
 import flixel.input.keyboard.FlxKey;
 #if mobile
-import mobile.flixel.Hitbox;
 import mobile.flixel.FlxButton;
 #end
 enum abstract Action(String) to String from String
@@ -304,7 +303,7 @@ trackedInputsNOTES.push(input);
 action.add(input);
 }
 
-public function setHitBox(hitbox:Hitbox)
+public function setHitBox(hitbox:mobile.flixel.Hitbox)
 {
     inline forEachBound(Control.NOTE_UP, (action, state) -> addButtonNOTES(action, hitbox.buttons[2], state));
     inline forEachBound(Control.NOTE_DOWN, (action, state) -> addButtonNOTES(action, hitbox.buttons[1], state));
