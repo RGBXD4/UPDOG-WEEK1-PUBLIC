@@ -869,6 +869,11 @@ class PlayState extends MusicBeatState
 		cacheCountdown();
 		
 		refreshZ(stage);
+
+		#if mobile
+		addMobileControls();
+		mobileControls.visible = true;
+		#end
 	}
 	
 	function noteskinLoading(skin:String = 'default')
