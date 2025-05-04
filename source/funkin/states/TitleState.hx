@@ -488,7 +488,7 @@ class TitleState extends MusicBeatState
 							changeSel(0, 1);
 						}
 					}
-					if (controls.ACCEPT)
+					if (controls.ACCEPT || FlxG.mouse.overlaps(but) && FlxG.mouse.justPressed)
 					{
 						selectedOption();
 					}
