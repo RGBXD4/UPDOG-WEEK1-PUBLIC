@@ -303,7 +303,7 @@ trackedInputsNOTES.push(input);
 action.add(input);
 }
 
-public function setHitBox(hitbox:FlxHitbox)
+public function setHitBox(hitbox:Hitbox)
 {
     inline forEachBound(Control.NOTE_UP, (action, state) -> addButtonNOTES(action, hitbox.buttons[2], state));
     inline forEachBound(Control.NOTE_DOWN, (action, state) -> addButtonNOTES(action, hitbox.buttons[1], state));
