@@ -74,7 +74,7 @@ class ImpostorPause extends MusicBeatSubstate
 		super.update(elapsed);
 		
 		if (controls.UI_DOWN_P || controls.UI_UP_P) changeSel(controls.UI_DOWN_P ? 1 : -1);
-		if (controls.ACCEPT)
+		if (controls.ACCEPT || FlxG.mouse.overlaps(buttons) && FlxG.mouse.justPressed)
 		{
 			buttons.members[curSel].onClick();
 		}
