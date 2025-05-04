@@ -1,8 +1,9 @@
 package funkin.api;
-
+#if desktop
 import Sys.sleep;
 import discord_rpc.DiscordRpc;
 import funkin.states.*;
+#end
 #if LUA_ALLOWED
 import llua.Lua;
 import llua.State;
@@ -10,6 +11,7 @@ import llua.State;
 
 class DiscordClient
 {
+	#if desktop
 	public static var discordPresences:Array<String> = [
 		'Pegging Aren\'t I funny',
 		'Pegging Aren\'t I funny 2',
@@ -135,4 +137,5 @@ class DiscordClient
 			});
 	}
 	#end
+		#end
 }
