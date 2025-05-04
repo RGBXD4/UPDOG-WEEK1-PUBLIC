@@ -8,7 +8,7 @@ import openfl.display.Shape;
 import mobile.flixel.FlxButton;
 import flixel.tweens.FlxTween;
 
-class FlxHitbox extends FlxSpriteGroup
+class Hitbox extends FlxSpriteGroup
 {
 	public var buttons:Array<FlxButton> = [];
 
