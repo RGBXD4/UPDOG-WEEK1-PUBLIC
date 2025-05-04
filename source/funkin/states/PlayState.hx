@@ -4900,7 +4900,9 @@ class PlayState extends MusicBeatState
 	
 	function getPresence()
 	{
+		#if desktop
 		// Get the discord presence
 		return ClientPrefs.disc_rpc ? SONG.song : FlxG.random.getObject(DiscordClient.discordPresences);
+		#end
 	}
 }
