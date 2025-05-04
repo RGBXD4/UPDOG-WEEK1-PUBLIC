@@ -234,10 +234,10 @@ class FlxTypedButton<T:FlxSprite> extends FlxSprite implements IFlxInput
 	function setupAnimation(animationName:String, frameIndex:Int):Void
 	{
 		// make sure the animation doesn't contain an invalid frame
-		frameIndex = Std.int(Math.min(frameIndex, animation.frames - 1));
+		frameIndex = Std.int(Math.min(frameIndex, #if (flixel < "5.3.0") animation.frames #else animation.numFrames #end - 1));
 		animation.add(animationName, [frameIndex]);
 	}
-
+				     
 	/**
 	 * Called by the game state when state is changed (if this object belongs to the state)
 	 */
