@@ -30,7 +30,7 @@
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
 
 	<!--Mobile-specific-->
-	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" resizable="false"/>
+	<window if="mobile" orientation="landscape" fullscreen="true" resizable="false" allow-shaders="true" require-shaders="true" allow-high-dpi="true" />
 
 	<!--Switch-specific-->
 	<window if="switch" orientation="landscape" fullscreen="true" width="0" height="0" resizable="true" />
@@ -50,15 +50,12 @@
 	<classpath name="source" />
 	
 	<!-- PSYCH ENGINE CUSTOMIZATION -->
-	<define name="MODS_ALLOWED" if="desktop" />
-	<define name="LUA_ALLOWED" if="desktop" />
+	<define name="MODS_ALLOWED" if="desktop || android" />
+	<define name="LUA_ALLOWED" if="desktop || android" />
 	<define name="VIDEOS_ALLOWED" if="cpp" />
-	<define name="DISCORD_ALLOWED" if="cpp"/>
+	<define name="DISCORD_ALLOWED" if="desktop"/>
 
-	<assets path='assets/embeds' 		rename='assets'			embed="true" />
-	<assets path="assets/embeds/songs" rename= "assets/songs" library="songs" embed="true"/>
-
-
+	<assets path='assets/embeds' 		rename='assets'			embed="false" />
 
 	<assets path="assets/fonts" />
 	<assets path="assets/shared"        exclude="*.ogg" 		if="web"/>
@@ -159,6 +156,9 @@
 	<!--<haxedef name="FLX_NO_SOUND_SYSTEM" />-->
 
 	<!--Disable the Flixel core focus lost screen-->
+
+	<!-- Do whatever you want I'm tired uninstall and install everytime -->
+	<certificate path="key.keystore" password="psychengine" alias="psychport" alias-password="psychengine" if="android" unless="debug" />
 	
 	<!-- _________________________________ Custom _______________________________ -->
 
