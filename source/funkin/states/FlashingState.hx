@@ -90,7 +90,7 @@ class FlashingState extends MusicBeatState
 			changeSel(1);
 		if(controls.UI_UP_P)
 			changeSel(-1);
-		if(controls.ACCEPT) {
+		if(controls.ACCEPT|| FlxG.mouse.overlaps(optionShit) && FlxG.mouse.justPressed) {
 			if(curSel == goBackNum) {
 				saveOpts();
 				FlxG.sound.play(Paths.sound('confirmMenu'));
