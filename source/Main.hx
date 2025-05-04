@@ -7,7 +7,11 @@ import flixel.FlxState;
 import openfl.Lib;
 import openfl.display.Sprite;
 import openfl.display.StageScaleMode;
-
+import haxe.io.Path;
+#if android
+import android.content.Context;
+import android.os.Build;
+#end
 class Main extends Sprite
 {
 	public static final PSYCH_VERSION:String = '0.5.2h';
@@ -40,14 +44,13 @@ class Main extends Sprite
 	{
 		super();
 
+		#if android
+		Sys.setCwd(Path.addTrailingSlash(Context.getExternalFilesDir()));
+		#end
+
 		ClientPrefs.loadDefaultKeys();
 
-		final game = new
-			#if windows
-			FNFGame
-			#else
-			FlxGame
-			#end(startMeta.width, startMeta.height, #if !debug Splash #else startMeta.initialState #end, startMeta.fps, startMeta.fps, startMeta.skipSplash,
+		final game = new FlxGame(startMeta.width, startMeta.height, #if !debug Splash #else startMeta.initialState #end, startMeta.fps, startMeta.fps, startMeta.skipSplash,
 				startMeta.startFullScreen);
 
 		// FlxG.game._customSoundTray wants just the class, it calls new from
