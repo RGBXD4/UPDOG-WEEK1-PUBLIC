@@ -88,26 +88,32 @@ class MusicBeatState extends FlxUIState
 
 	#if mobile
 		var mobileControls:MobileControls;
+		var trackedInputsMobileControls:Array<FlxActionInput> = [];
 
 		public function addMobileControls()
-		{
+	        {
 			if (mobileControls != null)
 			removeMobileControls();
-
 			mobileControls = new MobileControls();
+			
+                        controls.setHitBox(mobileControls.hitbox);
+			
+			trackedInputsMobileControls = controls.trackedInputsNOTES;
+			controls.trackedInputsNOTES = [];
 
 			var camControls:FlxCamera = new FlxCamera();
 			FlxG.cameras.add(camControls, false);
 			camControls.bgColor.alpha = 0;
 
 			mobileControls.cameras = [camControls];
-			mobileControls.visible = false;
+			mobileControls.visible = true;
 			add(mobileControls);
-			Controls.CheckControl = true;
 		}
 
-		public function removeMobileControls()
+	public function removeMobileControls()
 		{
+			if (trackedInputsMobileControls.length > 0)
+			controls.removeFlxInput(trackedInputsMobileControls);
 
 			if (mobileControls != null)
 			remove(mobileControls);
@@ -115,14 +121,19 @@ class MusicBeatState extends FlxUIState
 
 		#end
 
-		override function destroy()
-		{
-			super.destroy();
+	override function destroy()
+	{
+		#if android
+		if (trackedInputsMobileControls.length > 0)
+		controls.removeFlxInput(trackedInputsMobileControls);
+		#end
+		super.destroy();
+		#if android
+		if (mobileControls != null)
+		mobileControls = FlxDestroyUtil.destroy(mobileControls);
+		#end
 
-			if (mobileControls != null)
-			mobileControls = FlxDestroyUtil.destroy(mobileControls);
-			#end
-		}
+	}
 
 	override function create()
 	{
