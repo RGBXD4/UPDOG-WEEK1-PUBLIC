@@ -528,7 +528,7 @@ class Paths
 	#if MODS_ALLOWED
 	inline static public function mods(key:String = '')
 	{
-		return '$MODS_DIRECTORY/' + key;
+		return Sys.getCwd() + '$MODS_DIRECTORY/' + key;
 	}
 	
 	inline static public function modsFont(key:String)
@@ -598,7 +598,7 @@ class Paths
 			var fileToCheck:String = mods(mod + '/' + key);
 			if (FileSystem.exists(fileToCheck)) return fileToCheck;
 		}
-		return '$MODS_DIRECTORY/' + key;
+		return Sys.getCwd() + '$MODS_DIRECTORY/' + key;
 	}
 	
 	public static var globalMods:Array<String> = [];
