@@ -43,7 +43,7 @@ class Main extends Sprite
 		ClientPrefs.loadDefaultKeys();
 
 		final game = new
-			#if CRASH_HANDLER
+			#if windows
 			FNFGame
 			#else
 			FlxGame
@@ -60,7 +60,6 @@ class Main extends Sprite
 		game._customSoundTray = funkin.objects.FunkinSoundTray;
 		addChild(game);
 
-		#if !mobile
 		fpsVar = new DebugDisplay(10, 3, 0xFFFFFF);
 		addChild(fpsVar);
 		Lib.current.stage.align = "tl";
@@ -69,7 +68,6 @@ class Main extends Sprite
 		{
 			fpsVar.visible = ClientPrefs.showFPS;
 		}
-		#end
 
 		#if html5
 		FlxG.autoPause = false;
